@@ -49,3 +49,16 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
+        array = [(p, q)]
+        while array:
+            n1, n2 =array.pop()
+            if not n1 and not n2:
+                continue
+            elif None in [n1, n2]:
+                return False
+            else:
+                if n1.val != n2.val:
+                    return False
+                array.append((n1.right, n2.right))
+                array.append((n1.left, n2.left))
+        return True
